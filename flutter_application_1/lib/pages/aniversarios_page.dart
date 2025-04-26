@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import '../classes/AniversarioList.dart';
-import '../classes/Aniversario.dart';
-import '../classes/Usuario.dart';
+import 'package:flutter_application_1/widgets/AniversarioListView.dart';
 
 class AniversariosPage extends StatelessWidget{
-  const AniversariosPage ({super.key});
+  const AniversariosPage({super.key});
 
-  @override
+@override
   Widget build(BuildContext context) {
-    final List tabela =  AniversarioList.getProximosAniversarios();
-    tabela.sort((a,b)=>a.data.compareTo(b.data));
     return Scaffold(
       appBar: AppBar(
         centerTitle:true,
@@ -22,42 +18,27 @@ class AniversariosPage extends StatelessWidget{
           )
         )
       ),
-      body: ListView.separated(
-        separatorBuilder: (context, int aniversario){
-          return Divider();
-        },
-        itemBuilder: (BuildContext context,int aniversario){
-        if(aniversario == 0){
-          return ListTile(
-            tileColor: const Color.fromARGB(255, 251, 120, 120),
-            title:Text("Aniversariante",style:TextStyle(fontSize:30)),
-            trailing: Text(
-              "Data",
-              style:TextStyle(
-                fontSize: 30
-              )
-            )
-          );
+      bottomSheet:FloatingActionButton(
+        shape:CircleBorder(),
+        backgroundColor:Colors.white,
+        onPressed:()=>showDialog(
+          context:context,
+          builder:(context){
+            return AlertDialog(
+              title: Text("Cadastro",textAlign:TextAlign.center,),
+            );
           }
-        else{
-          return ListTile(
-            title:Text(tabela[aniversario-1].usuario.nome),
-            trailing: Text(
-              tabela[aniversario-1].pegarData(),
-              style:TextStyle(
-                fontSize: 15
-              )
-            ),
-          );
-        }
-        },
-        padding:EdgeInsets.all(16),
+        ),
+        child:Icon(
+          Icons.add,size:50,color:Colors.black
+          ),
+        ),
         
-        itemCount: tabela.length+1,
-      ),
-    bottomNavigationBar: FloatingActionButton(onPressed: AniversarioList.adicionarAniversario(Aniversario(DateTime(2000,10,31),Usuario(login:"Luiz",senha:"321",nome:"Luiz Felipe"),"Ir para palmeira","Um Livro"))),
-      
+    bottomNavigationBar: FloatingActionButton(onPressed: ()=>((){})),
+      body: AniversarioListView()
     );
+  
 
-  }
+}
+
 }

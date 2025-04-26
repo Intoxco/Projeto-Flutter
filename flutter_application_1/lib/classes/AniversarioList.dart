@@ -355,5 +355,12 @@ class AniversarioList {
     lista.sort((a,b)=>a.data.compareTo(b.data));
     return lista;
   }
+  static List <Aniversario> filtrarAniversariosPorNome(String nome){
+      List <Aniversario> lista = List.from(
+    AniversarioList.lista.where(
+    (a) =>a.usuario.nome.contains(nome))
+    );
+    return lista;
+  }
 
 }

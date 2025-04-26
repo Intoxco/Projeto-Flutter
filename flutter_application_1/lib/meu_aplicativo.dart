@@ -9,7 +9,7 @@ class MeuAplicativo extends StatelessWidget {
     return MaterialApp(
       title: "Agenda de Aniversários",
       debugShowCheckedModeBanner:false,
-      home:AniversariosPage()
+      home:AniversariosPage(),
     );
   }
 }
