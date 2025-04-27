@@ -15,24 +15,31 @@ class _AniversarioListView extends State<AniversarioListView> {
   final busca = ValueNotifier<String>('');
   late TextEditingController controller;
   late List<Aniversario> lista;
+
 //Dependendo do modelo que escolhermos, vai ter que tirar isso
   @override
   void initState() {
     super.initState();
     controller = TextEditingController(text: "");
-    print(widget.data);
-    print(widget.checkData);
     if(widget.checkData){
       lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data,busca.value);
     }
     else{
-      print("a");
       lista = buscarListaComNome(busca.value);
     }
   }
-
+  _atualizarLista(){
+    setState(() {
+    if (widget.checkData) {
+      lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data, busca.value);
+    } else {
+      lista = buscarListaComNome(busca.value);
+    }
+  });
+  }
   @override
   void dispose() {
+    busca.removeListener(_atualizarLista);
     controller.dispose();
     super.dispose();
   }
@@ -45,6 +52,7 @@ class _AniversarioListView extends State<AniversarioListView> {
 
   @override
   Widget build(BuildContext context) {
+    busca.addListener(_atualizarLista);
     return ValueListenableBuilder<String>(
       valueListenable: busca,
       builder: (BuildContext context, String nome, Widget? child) {
