@@ -3,6 +3,7 @@ import "Usuario.dart";
 class AniversarioList {
   static List <Aniversario> lista= [
     Aniversario(DateTime(2025, 4, 1), Usuario(login: 'ana01', senha: 'senha01', nome: 'Ana Silveira'), 'Ama fotografia de paisagens', 'Filtro ND para câmera'),
+    Aniversario(DateTime(2025, 4, 1), Usuario(login: 'ana01', senha: 'senha01', nome: 'Ana Silveira'), 'Ama fotografia de paisagens', 'Filtro ND para câmera'),
     Aniversario(DateTime(2025, 4, 2), Usuario(login: 'bruno02', senha: 'senha02', nome: 'Bruno Teixeira'), 'Fã de documentários', 'Assinatura de streaming de docs'),
     Aniversario(DateTime(2025, 4, 3), Usuario(login: 'carla03', senha: 'senha03', nome: 'Carla Nogueira'), 'Gosta de culinária vegana', 'Livro de receitas veganas'),
     Aniversario(DateTime(2025, 4, 4), Usuario(login: 'diego04', senha: 'senha04', nome: 'Diego Souza'), 'Ama esportes radicais', 'Vale para bungee jump'),
@@ -374,4 +375,9 @@ class AniversarioList {
     );
     return lista;
   }
+  static bool mesmaData(DateTime data1, DateTime data2) {
+  return data1.year == data2.year &&
+         data1.month == data2.month &&
+         data1.day == data2.day;
+}
 }

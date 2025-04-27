@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '/classes/Data.dart';
+import '/widgets/AniversarioListView.dart';
+import '/classes/AniversarioList.dart';
 
 class CalendarioPage extends StatelessWidget {
   @override
@@ -53,16 +55,35 @@ Widget buildPageView(){
                 padding: EdgeInsets.all(10),
                 itemBuilder: (context, index) {
                   int dia = (index - diaSemanaComecoMes) + 1;
+                  dia <= 0 ? dia = 0 : dia = dia;
+                  DateTime diaClicado = DateTime(anoAtual,mesAtual,dia);
+
+                  bool temAniversario;
+                  if (mesAtual != diaClicado.month){
+                    temAniversario = false;
+                  } else {
+                    temAniversario = AniversarioList.lista.any(
+                    (aniversario) => AniversarioList.mesmaData(aniversario.data, diaClicado),
+                    );
+                  }
+
                   return InkWell(
                     
                   onTap: (){
-                    if (aniversarios[mesAtual]!.contains(dia)){
+                    if (temAniversario){
                       showDialog(
                         context: context, 
                         builder: (context){
                           return AlertDialog(
                             title: Text("Aniversariantes", textAlign: TextAlign.center,),
-                            
+                            content: SizedBox(
+                              width: double.maxFinite,
+                              height: 400,
+                              child: AniversarioListView(
+                                data: diaClicado,
+                                checkData: true,
+                              ),
+                            )
                           );
                         }
                         );
@@ -82,7 +103,7 @@ Widget buildPageView(){
                           color: Colors.green,
                         )
                         : SizedBox(),
-                      aniversarios[mesAtual]!.contains(dia) ? 
+                      temAniversario ? 
                         Container(
                           width: 25,
                           height: 2,
