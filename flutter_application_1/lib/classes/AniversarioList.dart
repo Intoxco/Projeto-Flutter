@@ -362,5 +362,16 @@ class AniversarioList {
     );
     return lista;
   }
-
+  static List<Aniversario> filtrarAniversariosPorDataENome(DateTime data,String nome){
+    List <Aniversario> lista = List.from(
+      AniversarioList.lista.where(
+      (a) => a.data.month.compareTo(data.month).isEven && a.data.day.compareTo(data.day).isEven
+      )
+    );
+    lista = List.from(
+    lista.where(
+    (a) =>a.usuario.nome.contains(nome))
+    );
+    return lista;
+  }
 }

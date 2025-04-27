@@ -35,7 +35,7 @@ class AniversariosPage extends StatelessWidget{
         ),
         
     bottomNavigationBar: FloatingActionButton(onPressed: ()=>((){})),
-      body: AniversarioListView()
+      body: AniversarioListView(data:DateTime(1),checkData:false)
     );
   
 
