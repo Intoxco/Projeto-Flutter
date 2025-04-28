@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/aniversarios_page.dart';
 import 'package:flutter_application_1/pages/calendario_page.dart';
+import 'package:flutter_application_1/pages/tela_padrao.dart';
 
 class TelaInicialPage extends StatelessWidget{
 
@@ -29,6 +30,14 @@ class TelaInicialPage extends StatelessWidget{
               );
               }, 
               child: Text("Lista")),
+              ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                  contex, 
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+              }, 
+              child: Text("Home")),
           ],
         ),
       ),
