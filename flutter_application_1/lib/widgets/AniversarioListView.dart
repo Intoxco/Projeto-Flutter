@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Aniversario.dart';
 import 'package:flutter_application_1/classes/AniversarioList.dart';
 
-// ignore: must_be_immutable
 class AniversarioListView extends StatefulWidget{
   final DateTime data;
   final bool checkData;
@@ -53,9 +52,6 @@ class _AniversarioListView extends State<AniversarioListView> {
   @override
   Widget build(BuildContext context) {
     busca.addListener(_atualizarLista);
-    return ValueListenableBuilder<String>(
-      valueListenable: busca,
-      builder: (BuildContext context, String nome, Widget? child) {
         return Padding(
           padding: const EdgeInsets.all(10),
           child: ListView.separated(
@@ -97,7 +93,5 @@ class _AniversarioListView extends State<AniversarioListView> {
             itemCount: lista.length + 1,
           ),
         );
-      },
-    );
   }
 }
