@@ -3,7 +3,6 @@ import "Usuario.dart";
 class AniversarioList {
   static List <Aniversario> lista= [
     Aniversario(DateTime(2025, 4, 1), Usuario(login: 'ana01', senha: 'senha01', nome: 'Ana Silveira'), 'Ama fotografia de paisagens', 'Filtro ND para câmera'),
-    Aniversario(DateTime(2025, 4, 1), Usuario(login: 'ana01', senha: 'senha01', nome: 'Tonhão da biqueira'), 'Ama fotografia de paisagens', 'Filtro ND para câmera'),
     Aniversario(DateTime(2025, 4, 2), Usuario(login: 'bruno02', senha: 'senha02', nome: 'Bruno Teixeira'), 'Fã de documentários', 'Assinatura de streaming de docs'),
     Aniversario(DateTime(2025, 4, 3), Usuario(login: 'carla03', senha: 'senha03', nome: 'Carla Nogueira'), 'Gosta de culinária vegana', 'Livro de receitas veganas'),
     Aniversario(DateTime(2025, 4, 4), Usuario(login: 'diego04', senha: 'senha04', nome: 'Diego Souza'), 'Ama esportes radicais', 'Vale para bungee jump'),
@@ -344,7 +343,7 @@ class AniversarioList {
     AniversarioList.lista.add(aniversario);
     }
   static removerAniversario(Aniversario aniversario){
-        AniversarioList.lista.removeWhere((niver)=>niver.usuario.login == (aniversario.usuario.login));
+        AniversarioList.lista.removeWhere((niver)=>niver.usuario.nome == (aniversario.usuario.nome) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
   }
   static List <Aniversario> getProximosAniversarios(){
     List <Aniversario> lista= List.from(
