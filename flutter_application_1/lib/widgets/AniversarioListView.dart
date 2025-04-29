@@ -70,7 +70,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                       border: const OutlineInputBorder(),
                       hintText: 'Pesquisar nome',
                       suffixIcon: IconButton(
-                        iconSize: 30,
+                        iconSize: 35,
                         icon: const Icon(Icons.search),
                         color: Colors.black,
                         onPressed: () => busca.value = controller.text,
@@ -80,6 +80,92 @@ class _AniversarioListView extends State<AniversarioListView> {
                 );
               } else {
                 return ListTile(
+                  onTap: ()=>{
+                  showDialog(
+                    context:context,
+                    builder:(context){
+                      return AlertDialog(
+                        title: Text(
+                          "Ações",
+                          textAlign:TextAlign.center,
+                          style:TextStyle(
+                            fontSize:40,
+                            fontWeight:FontWeight.bold,
+                            ),
+                          
+                          ),
+                        content:Container(
+                          height:100,
+                          decoration:BoxDecoration(color:Colors.white70,border:Border.all(width:1.5)),
+                          child:Column(
+                          mainAxisAlignment:MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children:[
+                            InkWell(
+                              onTap:(){
+                              setState( (){
+                                AniversarioList.removerAniversario(lista[index-1]);
+                                _atualizarLista();
+                                Navigator.pop(context);
+                                showDialog(
+                                  context:context,
+                                  builder:(context){
+                                    return AlertDialog(
+                                    title:Text("Aniversário deletado com sucesso!")
+                                    );
+                                  },
+                                );
+                                }
+                              );
+                                },
+                              child:
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.delete,
+                                    color:Colors.red,
+                                    size:45
+                                ),
+                                  Text(
+                                    " Deletar",
+                                    style:TextStyle(
+                                      fontSize:30,
+                                      color:Colors.red
+                                    ))
+                                ],
+                              ),
+                            ),
+                            Container(height:1.5,width:220,decoration:BoxDecoration(border:Border.all(width:1.5)),),
+                            InkWell(
+                              onTap:()=>{},
+                              child:
+                              Row(
+                              
+                                mainAxisAlignment:MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.edit,
+                                      color:Colors.green,
+                                      size:40
+                                  ),
+                                    Text(
+                                      " Editar",
+                                        style:TextStyle(
+                                          fontSize:30,
+                                          color:Colors.green
+                                        )
+                                        )
+                                ],
+                                )
+                            )
+                            ]
+                          )
+                        ),
+                      );
+                    }
+                  )
+              },
                   title: Text(lista[index - 1].usuario.nome),
                   subtitle: Text(lista[index-1].detalhes ?? ""),
                   trailing: Text(
