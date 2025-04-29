@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Aniversario.dart';
+import 'package:flutter_application_1/model/Aniversario.dart';
 
 class AniversarioEdicaoPage extends StatelessWidget{
   AniversarioEdicaoPage({super.key,required this.aniversario});

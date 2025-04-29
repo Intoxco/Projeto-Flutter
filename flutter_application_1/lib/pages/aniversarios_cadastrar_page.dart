@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Aniversario.dart';
-import 'package:flutter_application_1/classes/AniversarioList.dart';
+import 'package:flutter_application_1/model/Aniversario.dart';
+import 'package:flutter_application_1/model/AniversarioList.dart';
 import 'package:flutter_application_1/widgets/DatePicker.dart';
 import 'package:flutter_application_1/widgets/InputCounter.dart';
 

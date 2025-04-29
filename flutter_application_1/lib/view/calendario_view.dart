@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import '/classes/Data.dart';
+import '../controller/Calendario_controller.dart';
 import '/widgets/AniversarioListView.dart';
-import '/classes/AniversarioList.dart';
+import '../model/AniversarioList.dart';
 
 class CalendarioPage extends StatelessWidget {
+  const CalendarioPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: buildPageView(),
     );
   }
-
-
 Widget buildPageView(){
 
   return PageView.builder(
