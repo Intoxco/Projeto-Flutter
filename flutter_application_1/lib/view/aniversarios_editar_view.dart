@@ -13,7 +13,7 @@ class AniversarioEdicaoPage extends StatelessWidget{
 
   salvar(BuildContext context) {
   if (_form.currentState!.validate()) {
-    adicionarAniversario(_data.text, _nome.text, _descricao.text);
+    editarAniversario(_data.text, _nome.text, _descricao.text,aniversario);
     Navigator.pop(context);
     showDialog(
       context: context, 
@@ -53,8 +53,8 @@ class AniversarioEdicaoPage extends StatelessWidget{
         spacing:20,
         children: [
           SizedBox(height:100),
-          Center(child:SizedBox(width:MediaQuery.sizeOf(context).width-100,child:InputCounter(loadText:true,text:aniversario.nomeAniversariante,maxLength:60,label:"Nome do Aniversariante",textController:_nome))),
-          Center(child:SizedBox(width:MediaQuery.sizeOf(context).width-100,child:InputCounter(loadText:true,text:aniversario.detalhes?? "",maxLength:70,label:"Descrição do aniversário",textController:_descricao))),
+          Center(child:SizedBox(width:MediaQuery.sizeOf(context).width-100,child:InputCounter(loadText:true,text:aniversario.detalhes??"",maxLength:60,label:"Nome do Aniversariante",textController:_nome))),
+          Center(child:SizedBox(width:MediaQuery.sizeOf(context).width-100,child:InputCounter(loadText:true,text:aniversario.nomeAniversariante,maxLength:70,label:"Descrição do aniversário",textController:_descricao))),
           Center(child:SizedBox(width:MediaQuery.sizeOf(context).width-100,child:DatePicker(loadDate:true,date:aniversario.data,label: "Selecione o dia/mês", textController: _data))),
         ],
         )

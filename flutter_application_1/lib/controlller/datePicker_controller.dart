@@ -6,10 +6,10 @@ String criarStringDaData(DateTime date){
         else{
           data = date.day.toString();
         }
-        if(date.month < 10){
+  if(date.month < 10){
           data +="/0${date.month.toString()}";
         }
-        else{
+ else{
           data ="/${date.month.toString()}";
         }
     return data;

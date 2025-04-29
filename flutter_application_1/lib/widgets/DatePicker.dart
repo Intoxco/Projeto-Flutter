@@ -25,7 +25,7 @@ class _DatePicker extends State<DatePicker>{
     );
     if(_picked != null){
       setState(() {
-        widget.textController.text = criarStringDaData(widget.date);
+        widget.textController.text = criarStringDaData(_picked);
       });
     }
   }
