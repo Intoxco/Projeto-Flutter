@@ -1,7 +1,8 @@
-class Usuario{
-    String login;
-    String senha;
-    String nome;
+import 'package:flutter_application_1/classes/Aniversario.dart';
 
-    Usuario({required this.login,required this.senha,required this.nome});
+class Usuario{
+    static String login = "";
+    static String senha = "";
+    static String nome = "";
+    static Aniversario aniversario = Aniversario(DateTime.now(), "", "");
 }

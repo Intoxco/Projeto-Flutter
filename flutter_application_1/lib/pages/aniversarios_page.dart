@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/aniversarios_cadastrar_page.dart';
 import 'package:flutter_application_1/widgets/AniversarioListView.dart';
 
 class AniversariosPage extends StatelessWidget{
@@ -10,13 +11,9 @@ class AniversariosPage extends StatelessWidget{
       bottomSheet:FloatingActionButton(
         shape:CircleBorder(),
         backgroundColor:Colors.white,
-        onPressed:()=>showDialog(
-          context:context,
-          builder:(context){
-            return AlertDialog(
-              title: Text("Cadastro",textAlign:TextAlign.center,),
-            );
-          }
+        onPressed:()=>Navigator.push(context,MaterialPageRoute(
+          builder: (_) => AniversarioCadastroPage()
+          )
         ),
         child:Icon(
           Icons.add,size:50,color:Colors.black

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Aniversario.dart';
 import 'package:flutter_application_1/classes/AniversarioList.dart';
+import 'package:flutter_application_1/pages/aniversarios_editar_page.dart';
 
 class AniversarioListView extends StatefulWidget{
   final DateTime data;
@@ -14,8 +15,6 @@ class _AniversarioListView extends State<AniversarioListView> {
   final busca = ValueNotifier<String>('');
   late TextEditingController controller;
   late List<Aniversario> lista;
-
-//Dependendo do modelo que escolhermos, vai ter que tirar isso
   @override
   void initState() {
     super.initState();
@@ -138,7 +137,11 @@ class _AniversarioListView extends State<AniversarioListView> {
                             ),
                             Container(height:1.5,width:220,decoration:BoxDecoration(border:Border.all(width:1.5)),),
                             InkWell(
-                              onTap:()=>{},
+                              onTap:()=>{Navigator.push(context,MaterialPageRoute(
+                                  builder: (_) => AniversarioEdicaoPage(aniversario:lista[index-1])
+                                )
+                              )
+                              },
                               child:
                               Row(
                               
@@ -166,7 +169,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                     }
                   )
               },
-                  title: Text(lista[index - 1].usuario.nome),
+                  title: Text(lista[index - 1].nomeAniversariante),
                   subtitle: Text(lista[index-1].detalhes ?? ""),
                   trailing: Text(
                     lista[index - 1].pegarData(),
