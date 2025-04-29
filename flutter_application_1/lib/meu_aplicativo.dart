@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/view/tela_padrao.dart';
+import 'package:flutter_application_1/view/tela_padrao_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MeuAplicativo extends StatelessWidget {

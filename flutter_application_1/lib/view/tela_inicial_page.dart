@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/view/aniversarios_view.dart';
 import 'package:flutter_application_1/view/calendario_page.dart';
-import 'package:flutter_application_1/view/tela_padrao.dart';
+import 'package:flutter_application_1/view/tela_padrao_view.dart';
 
 class TelaInicialPage extends StatelessWidget{
 
