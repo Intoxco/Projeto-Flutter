@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/aniversarios_page.dart';
+import 'package:flutter_application_1/view/aniversarios_view.dart';
 import 'package:flutter_application_1/view/calendario_view.dart';
 import 'package:flutter_application_1/view/perfil_view.dart';
 
