@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_1/controlller/datePicker_controller.dart';
 class DatePicker extends StatefulWidget{
   const DatePicker({super.key,required this.loadDate,required this.date,required this.label,required this.textController});
   final TextEditingController textController;
   final String label;
-
   final bool loadDate;
   final DateTime date;
   @override
@@ -15,7 +14,7 @@ class _DatePicker extends State<DatePicker>{
     void initState(){
       super.initState();
       if(widget.loadDate){
-        widget.textController.text = widget.date.toString();
+        widget.textController.text = criarStringDaData(widget.date);
       }
     }
     Future<void> selectDate(BuildContext context) async{
@@ -25,21 +24,8 @@ class _DatePicker extends State<DatePicker>{
       lastDate: DateTime(DateTime.now().year,12,31)
     );
     if(_picked != null){
-      late String data;
-      if (_picked.day < 10){
-        data ="0${_picked.day.toString()}";
-        }
-      else{
-        data = _picked.day.toString();
-      }
-      if(_picked.month < 10){
-        data +="/0${_picked.month.toString()}";
-      }
-      else{
-        data ="/${_picked.month.toString()}";
-      }
       setState(() {
-        widget.textController.text = data;
+        widget.textController.text = criarStringDaData(widget.date);
       });
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Aniversario.dart';
-import 'package:flutter_application_1/classes/AniversarioList.dart';
-import 'package:flutter_application_1/pages/aniversarios_editar_page.dart';
+import 'package:flutter_application_1/model/Aniversario.dart';
+import 'package:flutter_application_1/view/aniversarios_editar_view.dart';
+import 'package:flutter_application_1/controlller/aniversarioListView_controller.dart';
 
 class AniversarioListView extends StatefulWidget{
   final DateTime data;
@@ -20,7 +20,7 @@ class _AniversarioListView extends State<AniversarioListView> {
     super.initState();
     controller = TextEditingController(text: "");
     if(widget.checkData){
-      lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data,busca.value);
+      lista = filtrarAniversariosPorDataENome(widget.data,busca.value);
     }
     else{
       lista = buscarListaComNome(busca.value);
@@ -29,7 +29,7 @@ class _AniversarioListView extends State<AniversarioListView> {
   _atualizarLista(){
     setState(() {
     if (widget.checkData) {
-      lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data, busca.value);
+      lista = filtrarAniversariosPorDataENome(widget.data, busca.value);
     } else {
       lista = buscarListaComNome(busca.value);
     }
@@ -40,12 +40,6 @@ class _AniversarioListView extends State<AniversarioListView> {
     busca.removeListener(_atualizarLista);
     controller.dispose();
     super.dispose();
-  }
-
-  List<Aniversario> buscarListaComNome(String nome) {
-    List<Aniversario> lista = AniversarioList.filtrarAniversariosPorNome(nome);
-    lista.sort((a, b) => a.data.compareTo(b.data));
-    return lista;
   }
 
   @override
@@ -103,7 +97,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                             InkWell(
                               onTap:(){
                               setState( (){
-                                AniversarioList.removerAniversario(lista[index-1]);
+                                removerAniversario(lista[index-1]);
                                 _atualizarLista();
                                 Navigator.pop(context);
                                 showDialog(
@@ -169,8 +163,8 @@ class _AniversarioListView extends State<AniversarioListView> {
                     }
                   )
               },
-                  title: Text(lista[index - 1].nomeAniversariante),
-                  subtitle: Text(lista[index-1].detalhes ?? ""),
+                  title: Text(lista[index - 1].detalhes ?? ""),
+                  subtitle: Text(lista[index-1].nomeAniversariante),
                   trailing: Text(
                     lista[index - 1].pegarData(),
                     style: TextStyle(fontSize: 15),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/Aniversario.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
 import 'package:flutter_application_1/widgets/DatePicker.dart';
 import 'package:flutter_application_1/widgets/InputCounter.dart';
+import 'package:flutter_application_1/controlller/aniversarios_cadastrar_controller.dart';
 
 class AniversarioCadastroPage extends StatelessWidget{
   AniversarioCadastroPage({super.key});
@@ -13,7 +12,7 @@ class AniversarioCadastroPage extends StatelessWidget{
 
   salvar(BuildContext context) {
   if (_form.currentState!.validate()) {
-    AniversarioList.adicionarAniversario(Aniversario(DateTime(DateTime.now().year,int.parse(_data.text.split("/")[1]),int.parse(_data.text.split("/")[0])),_nome.text,_descricao.text));
+    adicionarAniversario(_data.text,_nome.text,_descricao.text);
     Navigator.pop(context);
     showDialog(
       context: context, 

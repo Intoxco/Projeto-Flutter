@@ -314,6 +314,13 @@ Aniversario(DateTime(2025, 12, 31), 'Eduardo Nunes', 'Fã de tecnologia'),
   static removerAniversario(Aniversario aniversario){
         AniversarioList.lista.removeWhere((niver)=>niver.nomeAniversariante == (aniversario.nomeAniversariante) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
   }
+  static editarAniversario(Aniversario aniversarioAntigo,Aniversario aniversarioNovo){
+    int index = AniversarioList.lista.indexWhere(
+    (a)=>a.data.isAtSameMomentAs(aniversarioAntigo.data) && 
+    a.detalhes ==aniversarioAntigo.detalhes &&
+    a.nomeAniversariante == aniversarioAntigo.nomeAniversariante);
+    AniversarioList.lista[index] = aniversarioNovo;
+  }
   static List <Aniversario> getProximosAniversarios(){
     List <Aniversario> lista= List.from(
       AniversarioList.lista.where(

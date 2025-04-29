@@ -7,6 +7,7 @@ class PerfilPage extends StatefulWidget {
   _PerfilPageState createState() => _PerfilPageState();
 }
 
+
 class _PerfilPageState extends State<PerfilPage>{
 
   bool _edicao = false;

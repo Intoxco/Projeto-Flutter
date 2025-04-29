@@ -14,7 +14,14 @@ class InputCounter extends StatefulWidget{
 }
 class _InputCounter extends State<InputCounter>{
   var _counterText ="0";
-
+  @override
+      void initState(){
+        super.initState();
+        if(widget.loadText){
+          widget.textController.text = widget.text;
+          _counterText = (widget.text.length).toString();
+        }
+      }
   @override
   Widget build(BuildContext context) {
     return Container(
