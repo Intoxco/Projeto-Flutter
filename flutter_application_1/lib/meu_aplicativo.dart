@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/aniversarios_page.dart';
 import 'package:flutter_application_1/pages/tela_inicial_page.dart';
+import 'package:flutter_application_1/pages/tela_padrao.dart';
 
 class MeuAplicativo extends StatelessWidget {
   const MeuAplicativo({super.key});
@@ -10,7 +11,7 @@ class MeuAplicativo extends StatelessWidget {
     return MaterialApp(
       title: "Agenda de Aniversários",
       debugShowCheckedModeBanner:false,
-      home:TelaInicialPage(),
+      home:HomeScreen(),
     );
   }
 }

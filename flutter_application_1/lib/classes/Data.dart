@@ -23,4 +23,5 @@ List<String> nomesMeses = [
 
 DateTime dataAtual = DateTime.now();
 int anoAtual = dataAtual.year;
+int mesAtualG = dataAtual.month;
 List <String> diasDaSemana = ['D','S','T','Q','Q','S','S'];

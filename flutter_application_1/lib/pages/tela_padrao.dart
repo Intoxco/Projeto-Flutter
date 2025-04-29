@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/aniversarios_page.dart';
 import 'package:flutter_application_1/pages/calendario_page.dart';
+import 'package:flutter_application_1/pages/perfil_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,10 +10,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int _indice = 0 ;
+  int _indice = 0;
   final List<Widget> _telas = [
     CalendarioPage(),
     AniversariosPage(),
+    PerfilPage(),
   ];
 
   @override
@@ -37,6 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
         BottomNavigationBarItem(
           icon: Icon(Icons.list),
           label: "Lista",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: "Perfil",
         )
         ],
         onTap: (index){
