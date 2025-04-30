@@ -163,8 +163,8 @@ class _AniversarioListView extends State<AniversarioListView> {
                     }
                   )
               },
-                  title: Text(lista[index - 1].detalhes ?? ""),
-                  subtitle: Text(lista[index-1].nomeAniversariante),
+                  title: Text(lista[index - 1].nomeAniversariante),
+                  subtitle: Text(lista[index-1].detalhes ?? ""),
                   trailing: Text(
                     lista[index - 1].pegarData(),
                     style: TextStyle(fontSize: 15),

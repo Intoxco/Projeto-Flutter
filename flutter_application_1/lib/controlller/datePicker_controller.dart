@@ -10,7 +10,7 @@ String criarStringDaData(DateTime date){
           data +="/0${date.month.toString()}";
         }
  else{
-          data ="/${date.month.toString()}";
+          data +="/${date.month.toString()}";
         }
     return data;
 }
