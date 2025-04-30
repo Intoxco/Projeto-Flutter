@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Aniversario.dart';
-import 'package:flutter_application_1/classes/AniversarioList.dart';
+import 'package:flutter_application_1/model/Aniversario.dart';
+import 'package:flutter_application_1/view/aniversarios_editar_view.dart';
+import 'package:flutter_application_1/controlller/aniversarioListView_controller.dart';
 
 class AniversarioListView extends StatefulWidget{
   final DateTime data;
@@ -14,14 +15,12 @@ class _AniversarioListView extends State<AniversarioListView> {
   final busca = ValueNotifier<String>('');
   late TextEditingController controller;
   late List<Aniversario> lista;
-
-//Dependendo do modelo que escolhermos, vai ter que tirar isso
   @override
   void initState() {
     super.initState();
     controller = TextEditingController(text: "");
     if(widget.checkData){
-      lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data,busca.value);
+      lista = filtrarAniversariosPorDataENome(widget.data,busca.value);
     }
     else{
       lista = buscarListaComNome(busca.value);
@@ -30,7 +29,7 @@ class _AniversarioListView extends State<AniversarioListView> {
   _atualizarLista(){
     setState(() {
     if (widget.checkData) {
-      lista = AniversarioList.filtrarAniversariosPorDataENome(widget.data, busca.value);
+      lista = filtrarAniversariosPorDataENome(widget.data, busca.value);
     } else {
       lista = buscarListaComNome(busca.value);
     }
@@ -41,12 +40,6 @@ class _AniversarioListView extends State<AniversarioListView> {
     busca.removeListener(_atualizarLista);
     controller.dispose();
     super.dispose();
-  }
-
-  List<Aniversario> buscarListaComNome(String nome) {
-    List<Aniversario> lista = AniversarioList.filtrarAniversariosPorNome(nome);
-    lista.sort((a, b) => a.data.compareTo(b.data));
-    return lista;
   }
 
   @override
@@ -70,7 +63,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                       border: const OutlineInputBorder(),
                       hintText: 'Pesquisar nome',
                       suffixIcon: IconButton(
-                        iconSize: 30,
+                        iconSize: 35,
                         icon: const Icon(Icons.search),
                         color: Colors.black,
                         onPressed: () => busca.value = controller.text,
@@ -80,7 +73,97 @@ class _AniversarioListView extends State<AniversarioListView> {
                 );
               } else {
                 return ListTile(
-                  title: Text(lista[index - 1].usuario.nome),
+                  onTap: ()=>{
+                  showDialog(
+                    context:context,
+                    builder:(context){
+                      return AlertDialog(
+                        title: Text(
+                          "Ações",
+                          textAlign:TextAlign.center,
+                          style:TextStyle(
+                            fontSize:40,
+                            fontWeight:FontWeight.bold,
+                            ),
+                          
+                          ),
+                        content:Container(
+                          height:100,
+                          decoration:BoxDecoration(color:Colors.white70,border:Border.all(width:1.5)),
+                          child:Column(
+                          mainAxisAlignment:MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children:[
+                            InkWell(
+                              onTap:(){
+                              setState( (){
+                                removerAniversario(lista[index-1]);
+                                _atualizarLista();
+                                Navigator.pop(context);
+                                showDialog(
+                                  context:context,
+                                  builder:(context){
+                                    return AlertDialog(
+                                    title:Text("Aniversário deletado com sucesso!")
+                                    );
+                                  },
+                                );
+                                }
+                              );
+                                },
+                              child:
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.delete,
+                                    color:Colors.red,
+                                    size:45
+                                ),
+                                  Text(
+                                    " Deletar",
+                                    style:TextStyle(
+                                      fontSize:30,
+                                      color:Colors.red
+                                    ))
+                                ],
+                              ),
+                            ),
+                            Container(height:1.5,width:220,decoration:BoxDecoration(border:Border.all(width:1.5)),),
+                            InkWell(
+                              onTap:()=>{Navigator.push(context,MaterialPageRoute(
+                                  builder: (_) => AniversarioEdicaoPage(aniversario:lista[index-1])
+                                )
+                              )
+                              },
+                              child:
+                              Row(
+                              
+                                mainAxisAlignment:MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.edit,
+                                      color:Colors.green,
+                                      size:40
+                                  ),
+                                    Text(
+                                      " Editar",
+                                        style:TextStyle(
+                                          fontSize:30,
+                                          color:Colors.green
+                                        )
+                                        )
+                                ],
+                                )
+                            )
+                            ]
+                          )
+                        ),
+                      );
+                    }
+                  )
+              },
+                  title: Text(lista[index - 1].nomeAniversariante),
                   subtitle: Text(lista[index-1].detalhes ?? ""),
                   trailing: Text(
                     lista[index - 1].pegarData(),

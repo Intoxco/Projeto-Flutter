@@ -1,10 +1,8 @@
-import "Usuario.dart";
 class Aniversario{
     DateTime data;
-    Usuario usuario;
+    String nomeAniversariante;
     String? detalhes;
-    String? presente;
-    Aniversario(this.data,this.usuario,this.detalhes,this.presente);
+    Aniversario(this.data,this.nomeAniversariante,this.detalhes);
 
     String pegarData(){
     String dataRetorno;
