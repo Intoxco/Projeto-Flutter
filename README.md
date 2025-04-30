@@ -22,4 +22,4 @@ Atividades Individuais:
 
 Instruções de Instalação
 
- Ter o flutter instalado
+Instalar o flutter em sua máquina, baixar este projeto,configurar sua IDE(no vscode basta abrir um novo terminal e executar o comando flutter pub get)
