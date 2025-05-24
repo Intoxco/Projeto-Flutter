@@ -18,14 +18,14 @@ class _DatePicker extends State<DatePicker>{
       }
     }
     Future<void> selectDate(BuildContext context) async{
-    DateTime? _picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
       context: context, 
       firstDate: DateTime(DateTime.now().year-4,1,1), 
       lastDate: DateTime(DateTime.now().year,12,31)
     );
-    if(_picked != null){
+    if(picked != null){
       setState(() {
-        widget.textController.text = criarStringDaData(_picked);
+        widget.textController.text = criarStringDaData(picked);
       });
     }
   }

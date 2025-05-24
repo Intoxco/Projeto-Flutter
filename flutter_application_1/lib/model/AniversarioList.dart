@@ -1,24 +1,30 @@
+import "dart:collection";
+
+import "package:flutter/material.dart";
+
 import "Aniversario.dart";
-class AniversarioList {
-  static List <Aniversario> lista= [
-  ];
-  
-  static adicionarAniversario(Aniversario aniversario){
-    AniversarioList.lista.add(aniversario);
+class AniversarioList extends ChangeNotifier{
+  List <Aniversario> _lista= [];
+  UnmodifiableListView <Aniversario> get lista => UnmodifiableListView(_lista);
+  adicionarAniversario(Aniversario aniversario){
+    _lista.add(aniversario);
+    notifyListeners();
     }
-  static removerAniversario(Aniversario aniversario){
-        AniversarioList.lista.removeWhere((niver)=>niver.nomeAniversariante == (aniversario.nomeAniversariante) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
+  removerAniversario(Aniversario aniversario){
+    _lista.removeWhere((niver)=>niver.nomeAniversariante == (aniversario.nomeAniversariante) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
+    notifyListeners();
   }
-  static editarAniversario(Aniversario aniversarioAntigo,Aniversario aniversarioNovo){
-    int index = AniversarioList.lista.indexWhere(
+  editarAniversario(Aniversario aniversarioAntigo,Aniversario aniversarioNovo){
+    int index = _lista.indexWhere(
     (a)=>a.data.isAtSameMomentAs(aniversarioAntigo.data) && 
     a.detalhes ==aniversarioAntigo.detalhes &&
     a.nomeAniversariante == aniversarioAntigo.nomeAniversariante);
-    AniversarioList.lista[index] = aniversarioNovo;
+    _lista[index] = aniversarioNovo;
+    notifyListeners();
   }
-  static List <Aniversario> getProximosAniversarios(){
+  List <Aniversario> getProximosAniversarios(){
     List <Aniversario> lista= List.from(
-      AniversarioList.lista.where(
+      _lista.where(
         (a)=>(a.data.month.compareTo(DateTime.now().month) == 0 
         && a.data.day.compareTo(DateTime.now().day) >= 0 ) ||a.data.month.compareTo(DateTime.now().month) >0
       )
@@ -26,16 +32,16 @@ class AniversarioList {
     lista.sort((a,b)=>a.data.compareTo(b.data));
     return lista;
   }
-  static List <Aniversario> filtrarAniversariosPorNome(String nome){
+  List <Aniversario> filtrarAniversariosPorNome(String nome){
       List <Aniversario> lista = List.from(
-    AniversarioList.lista.where(
+    _lista.where(
     (a) =>a.nomeAniversariante.contains(nome))
     );
     return lista;
   }
-  static List<Aniversario> filtrarAniversariosPorDataENome(DateTime data,String nome){
+  List<Aniversario> filtrarAniversariosPorDataENome(DateTime data,String nome){
     List <Aniversario> lista = List.from(
-      AniversarioList.lista.where(
+      _lista.where(
       (a) => a.data.month.compareTo(data.month).isEven && a.data.day.compareTo(data.day).isEven
       )
     );

@@ -6,14 +6,16 @@ class Aniversario{
 
     String pegarData(){
     String dataRetorno;
-    if(data.day<10)
+    if(data.day<10) {
       dataRetorno="0${data.day}/";
-    else 
+    } else {
       dataRetorno="${data.day}/";
-    if(data.month<10)
+    }
+    if(data.month<10) {
       dataRetorno+="0${data.month}";
-    else
+    } else {
       dataRetorno+="${data.month}";
+    }
     return dataRetorno;
     }
 

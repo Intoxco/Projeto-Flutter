@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../controlller/Calendario_controller.dart';
 import '/widgets/AniversarioListView.dart';
 import '../model/AniversarioList.dart';
 
 class CalendarioPage extends StatelessWidget {
-  const CalendarioPage({super.key});
+  const CalendarioPage({super.key,required this.aniversarioList});
+  final AniversarioList aniversarioList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ Widget buildPageView(){
       return Column(
         children: [
           SizedBox(height: 16,),
-          Text(nomesMeses[mesAtual-1] + ' ' + anoAtual.toString(),
+          Text('${nomesMeses[mesAtual-1]} $anoAtual',
             style: TextStyle(
                fontSize: 20,
             ),
@@ -61,7 +63,7 @@ Widget buildPageView(){
                   if (mesAtual != diaClicado.month){
                     temAniversario = false;
                   } else {
-                    temAniversario = AniversarioList.lista.any(
+                    temAniversario = aniversarioList.lista.any(
                     (aniversario) => AniversarioList.mesmaData(aniversario.data, diaClicado),
                     );
                   }
@@ -81,6 +83,7 @@ Widget buildPageView(){
                               child: AniversarioListView(
                                 data: diaClicado,
                                 checkData: true,
+                                aniversarioList: Provider.of<AniversarioList>(context),
                               ),
                             )
                           );

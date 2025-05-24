@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/Aniversario.dart';
+import 'package:flutter_application_1/model/AniversarioList.dart';
 import 'package:flutter_application_1/view/aniversarios_editar_view.dart';
 import 'package:flutter_application_1/controlller/aniversarioListView_controller.dart';
 
 class AniversarioListView extends StatefulWidget{
   final DateTime data;
   final bool checkData;
-  const AniversarioListView({super.key,required this.data, required this.checkData});
+  final AniversarioList aniversarioList;
+  const AniversarioListView({super.key,required this.data, required this.checkData,required this.aniversarioList});
   @override
   State<AniversarioListView> createState()=> _AniversarioListView();
 
@@ -14,27 +16,16 @@ class AniversarioListView extends StatefulWidget{
 class _AniversarioListView extends State<AniversarioListView> {
   final busca = ValueNotifier<String>('');
   late TextEditingController controller;
-  late List<Aniversario> lista;
+  late List <Aniversario> lista;
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController(text: "");
-    if(widget.checkData){
-      lista = filtrarAniversariosPorDataENome(widget.data,busca.value);
-    }
-    else{
-      lista = buscarListaComNome(busca.value);
-    }
+      controller = TextEditingController(text: "");
   }
   _atualizarLista(){
-    setState(() {
-    if (widget.checkData) {
-      lista = filtrarAniversariosPorDataENome(widget.data, busca.value);
-    } else {
-      lista = buscarListaComNome(busca.value);
-    }
-  });
+    lista= atualizarLista(widget.data,busca.value,widget.checkData,widget.aniversarioList);
   }
+
   @override
   void dispose() {
     busca.removeListener(_atualizarLista);
@@ -44,7 +35,12 @@ class _AniversarioListView extends State<AniversarioListView> {
 
   @override
   Widget build(BuildContext context) {
-    busca.addListener(_atualizarLista);
+    lista = atualizarLista(widget.data, busca.value, widget.checkData, widget.aniversarioList);
+    busca.addListener((){
+      setState((){
+        _atualizarLista;}
+        );
+    });
         return Padding(
           padding: const EdgeInsets.all(10),
           child: ListView.separated(
@@ -97,7 +93,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                             InkWell(
                               onTap:(){
                               setState( (){
-                                removerAniversario(lista[index-1]);
+                                removerAniversario(lista[index-1],widget.aniversarioList);
                                 _atualizarLista();
                                 Navigator.pop(context);
                                 showDialog(
@@ -132,7 +128,7 @@ class _AniversarioListView extends State<AniversarioListView> {
                             Container(height:1.5,width:220,decoration:BoxDecoration(border:Border.all(width:1.5)),),
                             InkWell(
                               onTap:()=>{Navigator.push(context,MaterialPageRoute(
-                                  builder: (_) => AniversarioEdicaoPage(aniversario:lista[index-1])
+                                  builder: (_) => AniversarioEdicaoPage(aniversario:lista[index-1],aniversarioList:widget.aniversarioList,)
                                 )
                               )
                               },

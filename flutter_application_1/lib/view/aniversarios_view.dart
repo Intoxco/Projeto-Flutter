@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/AniversarioList.dart';
 import 'package:flutter_application_1/view/aniversarios_cadastrar_view.dart';
 import 'package:flutter_application_1/widgets/AniversarioListView.dart';
+import 'package:provider/provider.dart';
 
 class AniversariosPage extends StatelessWidget{
   const AniversariosPage({super.key});
@@ -12,14 +14,14 @@ class AniversariosPage extends StatelessWidget{
         shape:CircleBorder(),
         backgroundColor:Colors.white,
         onPressed:()=>Navigator.push(context,MaterialPageRoute(
-          builder: (_) => AniversarioCadastroPage()
+          builder: (_) => AniversarioCadastroPage(aniversarioList:Provider.of<AniversarioList>(context))
           )
         ),
         child:Icon(
           Icons.add,size:50,color:Colors.black
           ),
         ),        
-      body: AniversarioListView(data:DateTime(1),checkData:false)
+      body: AniversarioListView(data:DateTime(1),checkData:false,aniversarioList: Provider.of<AniversarioList>(context))
     );
   
 

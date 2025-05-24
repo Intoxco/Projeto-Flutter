@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/AniversarioList.dart';
 import 'package:flutter_application_1/view/aniversarios_view.dart';
 import 'package:flutter_application_1/view/calendario_view.dart';
 import 'package:flutter_application_1/view/perfil_view.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  late AniversarioList aniversarioList;
   int _indice = 0;
-  final List<Widget> _telas = [
-    CalendarioPage(),
-    AniversariosPage(),
-    PerfilPage(),
-  ];
+  late List<Widget> telas;
 
   @override
   Widget build(BuildContext context) {
+    aniversarioList = Provider.of<AniversarioList>(context);
+    telas = [
+        CalendarioPage(aniversarioList:aniversarioList),
+    AniversariosPage(),
+    PerfilPage(),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text("BDAY", style: TextStyle(
@@ -28,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: Color.fromARGB(255, 64, 64, 228),
       ),
-      body: _telas[_indice],
+      body: telas[_indice],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indice,
         items: [
