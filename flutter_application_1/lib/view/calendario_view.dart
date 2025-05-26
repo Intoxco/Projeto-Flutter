@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controlller/Calendario_controller.dart';
-import '/widgets/AniversarioListView.dart';
-import '../model/AniversarioList.dart';
+import '../controlller/calendario_controller.dart';
+import '../widgets/aniversario_list_view.dart';
+import '../model/aniversario_list.dart';
 
 class CalendarioPage extends StatelessWidget {
   const CalendarioPage({super.key,required this.aniversarioList});

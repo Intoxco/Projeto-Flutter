@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/Aniversario.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
+import 'package:flutter_application_1/model/aniversario.dart';
+import 'package:flutter_application_1/model/aniversario_list.dart';
 import 'package:flutter_application_1/view/aniversarios_editar_view.dart';
-import 'package:flutter_application_1/controlller/aniversarioListView_controller.dart';
+import 'package:flutter_application_1/controlller/aniversario_list_view_controller.dart';
 
 class AniversarioListView extends StatefulWidget{
   final DateTime data;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
+import 'package:flutter_application_1/model/aniversario_list.dart';
 import 'package:flutter_application_1/view/aniversarios_cadastrar_view.dart';
-import 'package:flutter_application_1/widgets/AniversarioListView.dart';
+import 'package:flutter_application_1/widgets/aniversario_list_view.dart';
 import 'package:provider/provider.dart';
 
 class AniversariosPage extends StatelessWidget{

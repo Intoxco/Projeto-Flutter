@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../model/Usuario.dart';
+import '../model/usuario.dart';
 
 class PerfilController {
   bool edicao = false;

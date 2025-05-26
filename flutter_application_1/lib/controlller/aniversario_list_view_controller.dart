@@ -1,5 +1,5 @@
-import 'package:flutter_application_1/model/Aniversario.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
+import 'package:flutter_application_1/model/aniversario.dart';
+import 'package:flutter_application_1/model/aniversario_list.dart';
 
 List<Aniversario> buscarListaComNome(String nome,AniversarioList aniversarioList) {
     List<Aniversario> lista = aniversarioList.filtrarAniversariosPorNome(nome);
