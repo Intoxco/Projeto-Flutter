@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/widgets/auth_service.dart';
+import 'package:flutter_application_1/controlller/auth_check_controller.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget{
   const Login({super.key});
-
+  @override
   State<Login> createState()=> _LoginState();
 }
 class _LoginState extends State<Login>{

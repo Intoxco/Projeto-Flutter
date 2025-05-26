@@ -24,7 +24,6 @@ class PerfilController {
   void mudarEstado(Function callback) {
     edicao = !edicao;
     callback();
-    print("Estado atual: $edicao");
   }
 
   Future<void> escolherData(BuildContext context, Function callback) async {

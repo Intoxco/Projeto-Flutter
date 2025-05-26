@@ -6,7 +6,7 @@ class AuthException implements Exception{
   AuthException({required this.message});
 }
 class AuthService extends ChangeNotifier{
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? usuario;
   bool isLoading = true;
   AuthService(){
@@ -21,7 +21,7 @@ class AuthService extends ChangeNotifier{
   }
   login(String email,String senha) async{
 try{
-      await _auth.createUserWithEmailAndPassword(email: email, password: senha);
+      await _auth.signInWithEmailAndPassword(email: email, password: senha);
       _getUser();
     }on FirebaseAuthException catch (e){
       if(e.code == 'user-not-found'){

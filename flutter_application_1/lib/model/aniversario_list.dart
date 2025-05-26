@@ -3,7 +3,7 @@ import "package:cloud_firestore/cloud_firestore.dart";
 
 import "package:flutter/material.dart";
 import "package:flutter_application_1/model/db_firestore.dart";
-import "package:flutter_application_1/widgets/auth_service.dart";
+import "package:flutter_application_1/controlller/auth_check_controller.dart";
 
 import "aniversario.dart";
 class AniversarioList extends ChangeNotifier{
@@ -15,17 +15,25 @@ class AniversarioList extends ChangeNotifier{
 
   
   AniversarioList({required this.auth}){
-    _copularLista();
-    _startFirestore();
+    _iniciarLista();
   }
-  _copularLista() async{
+  _iniciarLista()async{
+    await _startFirestore();
+    await _popularLista();
+  }
+  _popularLista() async{
     if(auth.usuario != null && _lista.isEmpty){
-      final snapshot = await db.collection("usuarios/${auth.usuario}!.uid/aniversarios").get();
-      _lista = snapshot.docs.toList() as List<Aniversario>;
+      final snapshot = await db.collection("usuarios/${auth.usuario!.uid}/aniversarios").get();
+      List <Aniversario> lista = [];
+      for (var doc in snapshot.docs) {
+        Aniversario aniversario = Aniversario(doc.get("data").toDate(),doc.get("nomeAniversariante"),doc.get("descricao"),doc.id);
+        lista.add(aniversario);
+      }
+      _lista = lista;
       notifyListeners();
     }
   }
-  _startFirestore(){
+  _startFirestore() async{
     db = DBFirestore.get();
   }
   adicionarAniversario(Aniversario aniversario) async{
@@ -34,33 +42,39 @@ class AniversarioList extends ChangeNotifier{
     await db
     .collection('usuarios/${auth.usuario!.uid}/aniversarios')
     .doc()
-    .set({// fazer com que o nome do aniversariante seja unico
+    .set({
+      'nomeAniversariante':aniversario.nomeAniversariante,
       'descricao':aniversario.detalhes,
       'data':aniversario.data,
     });
     }
   removerAniversario(Aniversario aniversario) async {
-    _lista.removeWhere((niver)=>niver.nomeAniversariante == (aniversario.nomeAniversariante) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
-    notifyListeners();
     await db
     .collection('usuarios/${auth.usuario!.uid}/aniversarios')
-    .doc(_lista.length.toString())
-    .delete(); // adicionar algo para garantir a deleção ao inves do length
+    .doc(aniversario.uid??"")
+    .delete();
+  _lista.removeWhere((niver)=>niver.nomeAniversariante == (aniversario.nomeAniversariante) && niver.detalhes == aniversario.detalhes && aniversario.data == niver.data);
+  notifyListeners();
+
   }
   editarAniversario(Aniversario aniversarioAntigo,Aniversario aniversarioNovo) async{
     int index = _lista.indexWhere(
     (a)=>a.data.isAtSameMomentAs(aniversarioAntigo.data) && 
     a.detalhes ==aniversarioAntigo.detalhes &&
     a.nomeAniversariante == aniversarioAntigo.nomeAniversariante);
+    aniversarioNovo.uid = aniversarioAntigo.uid;
     _lista[index] = aniversarioNovo;
     notifyListeners();
-    await db
-    .collection('usuarios/${auth.usuario!.uid}/aniversarios')
-    .doc(_lista.length.toString())
-    .set({// fazer com que o nome do aniversariante seja unico, diferente do length
-      'descricao':aniversarioNovo.detalhes,
-      'data':aniversarioNovo.data,
-    });
+    if (aniversarioAntigo.uid != null && aniversarioAntigo.uid!.isNotEmpty) {
+      await db
+          .collection('usuarios/${auth.usuario!.uid}/aniversarios')
+          .doc(aniversarioAntigo.uid)
+          .set({
+        'nomeAniversariante': aniversarioNovo.nomeAniversariante,
+        'descricao': aniversarioNovo.detalhes,
+        'data': aniversarioNovo.data,
+      });
+    }
   }
   List <Aniversario> getProximosAniversarios(){
     List <Aniversario> lista= List.from(

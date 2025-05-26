@@ -6,5 +6,5 @@ class Usuario{
     static String nome = "";
     static String recado = "";
     static DateTime ?data;
-    static Aniversario aniversario = Aniversario(DateTime.now(), "", "");
+    static Aniversario aniversario = Aniversario(DateTime.now(), "", "","");
 }
