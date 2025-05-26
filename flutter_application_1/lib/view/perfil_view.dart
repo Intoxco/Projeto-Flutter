@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/auth_service.dart';
+import 'package:flutter_application_1/controlller/auth_check_controller.dart';
 import 'package:provider/provider.dart';
 import '../model/usuario.dart';
 import '../controlller/perfil_controller.dart';
