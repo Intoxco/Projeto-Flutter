@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/auth_service.dart';
+import 'package:provider/provider.dart';
 import '../model/usuario.dart';
 import '../controlller/perfil_controller.dart';
 
@@ -140,6 +142,25 @@ class _PerfilPageState extends State<PerfilPage> {
         _linhaItem(Icons.person, Usuario.nome),
         _linhaItem(Icons.cake, controller.dataController.text),
         _linhaItem(Icons.textsms_rounded, Usuario.recado),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 24),
+          child: OutlinedButton(
+            //onPressed: () =>context.read()<AuthService>().logout(),
+            onPressed: () => context.read<AuthService>().logout(),
+            child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        'Sair do App',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
+                ),
+            ),
+        )
       ],
     );
   }

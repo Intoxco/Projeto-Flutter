@@ -15,8 +15,8 @@ class AniversarioList extends ChangeNotifier{
 
   
   AniversarioList({required this.auth}){
-    _copularLista();
     _startFirestore();
+    _copularLista();
   }
   _copularLista() async{
     if(auth.usuario != null && _lista.isEmpty){
@@ -96,4 +96,5 @@ class AniversarioList extends ChangeNotifier{
          data1.month == data2.month &&
          data1.day == data2.day;
 }
+
 }

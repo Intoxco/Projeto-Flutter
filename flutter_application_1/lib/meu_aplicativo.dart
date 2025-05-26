@@ -15,7 +15,6 @@ class MeuAplicativo extends StatelessWidget {
     providers:[
       ChangeNotifierProvider(create:(context)=>AuthService()),
       ChangeNotifierProvider(create:(context)=> AniversarioList(auth:context.read<AuthService>()))
-
     ],
     child:MaterialApp(
       localizationsDelegates: [
