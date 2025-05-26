@@ -6,7 +6,7 @@ class AuthException implements Exception{
   AuthException({required this.message});
 }
 class AuthService extends ChangeNotifier{
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? usuario;
   bool isLoading = true;
   AuthService(){
