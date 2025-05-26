@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/model/Aniversario.dart';
+import 'package:flutter_application_1/model/aniversario.dart';
 
 class Usuario{
     static String login = "";

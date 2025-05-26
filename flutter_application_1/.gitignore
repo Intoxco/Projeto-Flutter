@@ -43,12 +43,4 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# Firebase config (proteja se for público)
-firebase_options.dart
-android/app/google-services.json
-
-# Arquivos de cache do Firebase CLI
-.firebase/
-firebaserc
-firebase.json
+**/android/app/googleService.json

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
+import 'package:flutter_application_1/model/aniversario_list.dart';
 import 'package:flutter_application_1/view/aniversarios_view.dart';
 import 'package:flutter_application_1/view/calendario_view.dart';
 import 'package:flutter_application_1/view/perfil_view.dart';
@@ -16,10 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
   late AniversarioList aniversarioList;
   int _indice = 0;
   late List<Widget> telas;
-
+  @override 
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  aniversarioList = Provider.of<AniversarioList>(context);
+}
   @override
   Widget build(BuildContext context) {
-    aniversarioList = Provider.of<AniversarioList>(context);
     telas = [
         CalendarioPage(aniversarioList:aniversarioList),
     AniversariosPage(),

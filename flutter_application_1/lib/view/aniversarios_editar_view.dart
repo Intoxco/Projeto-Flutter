@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/Aniversario.dart';
-import 'package:flutter_application_1/model/AniversarioList.dart';
-import 'package:flutter_application_1/widgets/DatePicker.dart';
-import 'package:flutter_application_1/widgets/InputCounter.dart';
+import 'package:flutter_application_1/model/aniversario.dart';
+import 'package:flutter_application_1/model/aniversario_list.dart';
+import 'package:flutter_application_1/widgets/date_picker.dart';
+import 'package:flutter_application_1/widgets/input_counter.dart';
 import 'package:flutter_application_1/controlller/aniversarios_editar_controller.dart';
 class AniversarioEdicaoPage extends StatelessWidget{
   AniversarioEdicaoPage({super.key,required this.aniversario,required this.aniversarioList}); 
