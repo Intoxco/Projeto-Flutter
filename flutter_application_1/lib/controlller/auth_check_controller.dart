@@ -35,7 +35,7 @@ try{
   await _auth.signOut();
   _getUser();
   }
-  _getUser(){
+   _getUser(){
     usuario = _auth.currentUser;
     notifyListeners();
   }

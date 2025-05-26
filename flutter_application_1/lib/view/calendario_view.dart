@@ -100,8 +100,8 @@ Widget buildPageView(){
                         : Text(dia.toString()),
                       dataAtual.day == dia && dataAtual.month == mesAtual ?
                         Container(
-                          width: 20,
-                          height: 20,
+                          width: 25,
+                          height: 2,
                           color: Colors.green,
                         )
                         : SizedBox(),
@@ -109,10 +109,10 @@ Widget buildPageView(){
                         Container(
                           width: 25,
                           height: 2,
-                          color: Colors.blue,
-                          
+                          color: Colors.blue, 
                         )
                         : SizedBox(),
+                      
                       ],
                       )
                   );

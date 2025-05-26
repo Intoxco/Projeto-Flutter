@@ -110,4 +110,5 @@ class AniversarioList extends ChangeNotifier{
          data1.month == data2.month &&
          data1.day == data2.day;
 }
+
 }
