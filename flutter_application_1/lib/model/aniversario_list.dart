@@ -37,16 +37,16 @@ class AniversarioList extends ChangeNotifier{
     db = DBFirestore.get();
   }
   adicionarAniversario(Aniversario aniversario) async{
-    _lista.add(aniversario);
-    notifyListeners();
-    await db
+    DocumentReference docRef =  await db
     .collection('usuarios/${auth.usuario!.uid}/aniversarios')
-    .doc()
-    .set({
+    .add({
       'nomeAniversariante':aniversario.nomeAniversariante,
       'descricao':aniversario.detalhes,
       'data':aniversario.data,
     });
+    aniversario.uid = docRef.id;
+    _lista.add(aniversario);
+    notifyListeners();
     }
   removerAniversario(Aniversario aniversario) async {
     await db
