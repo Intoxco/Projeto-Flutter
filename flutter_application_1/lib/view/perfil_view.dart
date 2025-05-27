@@ -34,7 +34,7 @@ class _PerfilPageState extends State<PerfilPage> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  color: Colors.blue,
+                  color: Color(0xFFC9F2F2),
                   width: larguraTela,
                   height: alturaTela * 0.25,
                   child: Row(
@@ -68,6 +68,7 @@ class _PerfilPageState extends State<PerfilPage> {
             left: (larguraTela / 2) - raioAvatar,
             child: CircleAvatar(
               radius: raioAvatar,
+              backgroundColor: Color (0xFFE8E8E8),
               backgroundImage: NetworkImage(
                   'https://img.freepik.com/fotos-gratis/retrato-de-homem-branco-isolado_53876-40306.jpg?semt=ais_hybrid&w=740'),
             ),
@@ -85,6 +86,7 @@ class _PerfilPageState extends State<PerfilPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 150),
             TextFormField(
               controller: controller.nomeController,
               decoration: InputDecoration(labelText: 'Nome'),
@@ -172,7 +174,7 @@ class _PerfilPageState extends State<PerfilPage> {
           Icon(
             icone,
             size: 50,
-            color: Colors.blueGrey,
+            color: Color(0xFFD8DCE6),
           ),
           SizedBox(width: 10),
           Text(

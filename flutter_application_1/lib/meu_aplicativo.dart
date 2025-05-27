@@ -25,6 +25,7 @@ class MeuAplicativo extends StatelessWidget {
     ),
     ],
     child:MaterialApp(
+    
       localizationsDelegates: [
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
@@ -33,7 +34,16 @@ class MeuAplicativo extends StatelessWidget {
   supportedLocales: [const Locale('pt', 'BR')],
       title: "Agenda de Aniversárioss",
       debugShowCheckedModeBanner:false,
-      home:AuthCheck()
+      home:AuthCheck(),
+    theme: ThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      //backgroundColor: Color(0xFFFFF5A5),
+      selectedItemColor: Color(0xFF67ABF5),
+      //unselectedItemColor: Color(0xFF444444),
+      //selectedIconTheme: IconThemeData(size: 30),
+      //unselectedIconTheme: IconThemeData(size: 24),
+    ),
+  ),
     )
   );
   }

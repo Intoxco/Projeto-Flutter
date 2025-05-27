@@ -32,10 +32,10 @@ void didChangeDependencies() {
       appBar: AppBar(
         title: Text("BDAY", style: TextStyle(
           fontSize: 25,
-          color: const Color.fromARGB(255, 218, 198, 198)
+          color: const Color.fromARGB(255, 0, 0, 0)
         ),
         ),
-        backgroundColor: Color.fromARGB(255, 64, 64, 228),
+        backgroundColor: Color(0xFF67ABF5),
       ),
       body: telas[_indice],
       bottomNavigationBar: BottomNavigationBar(
