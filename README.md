@@ -14,8 +14,7 @@ Um aplicativo Flutter de listagem e lembrete de datas de aniversários.
 - Personalização do Perfil
 
 ### Funcionalidades Faltantes 
-
-- Atualização da lista de aniversários após o cadastro ou edição, contudo, apenas ao voltar diretamente da aba específica para a ação, a lista recarrega se troca de página e voltar
+- Salvar dados do perdil na banco de dados
 - Personalização da foto de perfil
 ### Atividades Desenvolvidas
 
