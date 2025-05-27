@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../model/usuario.dart';
+import '../model/perfil_model.dart';
 
 class PerfilController {
   bool edicao = false;
-
+  //final PerfilModel perfilModel = PerfilModel();
   final nomeController = TextEditingController(text: Usuario.nome);
   final dataController = TextEditingController(
     text: Usuario.data != null
@@ -48,6 +49,8 @@ class PerfilController {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Formulário enviado!')),
       );
+      print("nomes ${Usuario.nome} ${Usuario.recado} ${dataController.text}");
+      //perfilModel.adicionarPerfilInfo(Usuario.nome, Usuario.recado, Usuario.data,);
       edicao = false;
       callback();
     }

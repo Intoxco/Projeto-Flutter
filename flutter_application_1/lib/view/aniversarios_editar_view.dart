@@ -39,7 +39,7 @@ class AniversarioEdicaoPage extends StatelessWidget{
             color:Colors.white
             ),
           ),
-        backgroundColor:Colors.red,
+        backgroundColor:Color(0xFF67ABF5),
         actions: [
           IconButton(
           onPressed: (){salvar(context);},
