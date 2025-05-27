@@ -45,7 +45,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         onPressed: () => controller.mudarEstado(() => setState(() {})),
                         icon: Icon(
                           controller.edicao ? Icons.check : Icons.edit,
-                          color: Colors.white,
+                          color: Colors.grey,
                         ),
                       ),
                     ],

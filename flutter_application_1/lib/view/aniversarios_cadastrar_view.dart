@@ -38,7 +38,7 @@ class AniversarioCadastroPage extends StatelessWidget{
             color:Colors.white
             ),
           ),
-        backgroundColor:Colors.green,
+        backgroundColor:Color(0xFF67ABF5),
         actions: [
           IconButton(
             icon:Icon(Icons.save,size:40,color:Colors.white),
