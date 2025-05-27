@@ -19,10 +19,10 @@ class AniversarioList extends ChangeNotifier{
   }
   _iniciarLista()async{
     await _startFirestore();
-    await _popularLista();
+    await popularLista();
   }
-  _popularLista() async{
-    if(auth.usuario != null && _lista.isEmpty){
+  popularLista() async{
+    if(auth.usuario != null){
       final snapshot = await db.collection("usuarios/${auth.usuario!.uid}/aniversarios").get();
       List <Aniversario> lista = [];
       for (var doc in snapshot.docs) {
@@ -34,7 +34,7 @@ class AniversarioList extends ChangeNotifier{
     }
   }
   _startFirestore() async{
-    db = DBFirestore.get();
+      db = DBFirestore.get();
   }
   adicionarAniversario(Aniversario aniversario) async{
     DocumentReference docRef =  await db

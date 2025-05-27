@@ -14,7 +14,15 @@ class MeuAplicativo extends StatelessWidget {
     return MultiProvider(
     providers:[
       ChangeNotifierProvider(create:(context)=>AuthService()),
-      ChangeNotifierProvider(create:(context)=> AniversarioList(auth:context.read<AuthService>()))
+      ChangeNotifierProxyProvider<AuthService, AniversarioList>(
+      create: (context) => AniversarioList(auth: context.read<AuthService>()),
+      update: (context, auth, anterior) {
+        anterior ??= AniversarioList(auth: auth);
+        anterior.auth = auth;
+        anterior.popularLista();
+        return anterior;
+      },
+    ),
     ],
     child:MaterialApp(
       localizationsDelegates: [
