@@ -145,7 +145,6 @@ class _PerfilPageState extends State<PerfilPage> {
         Padding(
           padding: EdgeInsets.symmetric(vertical: 24),
           child: OutlinedButton(
-            //onPressed: () =>context.read()<AuthService>().logout(),
             onPressed: () => context.read<AuthService>().logout(),
             child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
