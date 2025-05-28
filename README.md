@@ -12,26 +12,26 @@ Um aplicativo Flutter de listagem e lembrete de datas de aniversários.
 - Listagem de todos os aniversários
 - Adição, exclusão e edição de aniversários;
 - Personalização do Perfil
-
+- Uso de banco de dados Firebase
 ### Funcionalidades Faltantes 
-- Salvar dados do perdil na banco de dados
+- Salvar dados do perfil na banco de dados
 - Personalização da foto de perfil
 ### Atividades Desenvolvidas
 
   1. Rafael
 
-    Model:AniversarioList,Usuario,Aniversario
+    Model:aniversario_list,usuario,aniversario,db_firestore
 
-    Controller:aniversarioListView,aniversario_editar,datePicker,
+    Controller:aniversario_list_view,aniversario_editar,date_picker,auth_check
 
-    View:aniversario_cadastrar,aniversarios_editar,aniversarios_view,meu_aplicativo,aniversarioList,datePicker,InputCounter
+    View:aniversario_cadastrar,aniversarios_editar,aniversarios_view,meu_aplicativo,aniversario_list,date_picker,input_counter,auth_check
   2. Luiz
 
-    Model:aniversarioList,data
+    Model:aniversario_list,data
 
     Controller:perfil,calendario,
 
-    View:tela_padrao,perfil,calendario,meu_aplicativo
+    View:tela_padrao,perfil,calendario,meu_aplicativo,login
 ### Instruções de Instalação
 
 **Pré-requisitos**
