@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controlller/auth_check_controller.dart';
+import 'package:flutter_application_1/controlller/notification_controller.dart';
 import 'package:provider/provider.dart';
 import '../model/usuario.dart';
 import '../controlller/perfil_controller.dart';
@@ -161,7 +162,32 @@ class _PerfilPageState extends State<PerfilPage> {
                   ],
                 ),
             ),
-        )
+        ),
+        
+        //teste
+        Padding(
+  padding: EdgeInsets.symmetric(vertical: 10),
+  child: OutlinedButton(
+    onPressed: ()  {
+      NotificationController().showNotification(
+        CustomNotification(id: 1, title: 'titulo', body: 'teste', payload: '')
+      );
+    },
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Sair do App',
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
       ],
     );
   }

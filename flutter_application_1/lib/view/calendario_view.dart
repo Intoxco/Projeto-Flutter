@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/feriado.dart';
+import 'package:flutter_application_1/controlller/feriado_list.dart';
 import 'package:provider/provider.dart';
 import '../controlller/calendario_controller.dart';
 import '../widgets/aniversario_list_view.dart';
@@ -19,6 +21,7 @@ Widget buildPageView(){
     itemCount: 12,
     itemBuilder: (contex, pageIndex){
       int mesAtual = pageIndex + 1;
+      //List <Feriado> feriados = FeriadoList.buscarPorMes(mesAtual);
       DateTime dataMes = DateTime(anoAtual,mesAtual,1);
       int diaSemanaComecoMes = dataMes.weekday;
       if (diaSemanaComecoMes == 7){
@@ -118,7 +121,22 @@ Widget buildPageView(){
                   );
                 }
               )
+          ),
+        /*Expanded(
+         child: ListView.separated(
+            separatorBuilder:(_, __) {
+                return Divider();
+              },
+              itemBuilder:(BuildContext context,int index){
+                return ListTile(
+                  title:Text(feriados[index].nome),
+                  subtitle: Text(feriados[index].diaSemana),
+                  trailing: Text("${feriados[index].data.day}/${feriados[index].data.month}",style:TextStyle(fontSize:15))
+                );
+              },
+              itemCount: feriados.length,
           )
+        )*/
         ],
       );
       
