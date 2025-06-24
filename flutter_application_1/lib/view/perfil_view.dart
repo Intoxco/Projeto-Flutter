@@ -163,31 +163,6 @@ class _PerfilPageState extends State<PerfilPage> {
                 ),
             ),
         ),
-        
-        //teste
-        Padding(
-  padding: EdgeInsets.symmetric(vertical: 10),
-  child: OutlinedButton(
-    onPressed: ()  {
-      NotificationController().showNotification(
-        CustomNotification(id: 1, title: 'titulo', body: 'teste', payload: '')
-      );
-    },
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Sair do App',
-            style: TextStyle(fontSize: 18),
-          ),
-        ),
-      ],
-    ),
-  ),
-),
-
       ],
     );
   }

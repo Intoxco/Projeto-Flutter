@@ -23,20 +23,11 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,20 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBdVgj0vCN09HLENB0acLoop211ERBezC4',
-    appId: '1:244842030799:web:c9ff1d007dbbf7ee98b9ba',
-    messagingSenderId: '244842030799',
-    projectId: 'bday-b1bad',
-    authDomain: 'bday-b1bad.firebaseapp.com',
-    storageBucket: 'bday-b1bad.firebasestorage.app',
-    measurementId: 'G-K52C9F2SBQ',
+    apiKey: 'AIzaSyAa_UAdFfsvZXiuVcjeg2FZqmWuhDlwXio',
+    appId: '1:744453858462:web:14fecb561b9bb29311078f',
+    messagingSenderId: '744453858462',
+    projectId: 'birthday-32b48',
+    authDomain: 'birthday-32b48.firebaseapp.com',
+    storageBucket: 'birthday-32b48.firebasestorage.app',
+    measurementId: 'G-ECTYBWEBMB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCRZUxjNfcxxwBFwQMEBVSJvMqPfUT5rL0',
-    appId: '1:244842030799:android:451b55db41230cdf98b9ba',
-    messagingSenderId: '244842030799',
-    projectId: 'bday-b1bad',
-    storageBucket: 'bday-b1bad.firebasestorage.app',
+    apiKey: 'AIzaSyCbTuAAihDupgmwnDQOPsyuLAeewcOpLXk',
+    appId: '1:744453858462:android:f6828d28c45ecef211078f',
+    messagingSenderId: '744453858462',
+    projectId: 'birthday-32b48',
+    storageBucket: 'birthday-32b48.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDaQWQHMZiMpFymL0PWXTpMkyUhusSD_nE',
+    appId: '1:744453858462:ios:0f21da7367655c9311078f',
+    messagingSenderId: '744453858462',
+    projectId: 'birthday-32b48',
+    storageBucket: 'birthday-32b48.firebasestorage.app',
+    iosBundleId: 'com.example.flutterApplication1',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDaQWQHMZiMpFymL0PWXTpMkyUhusSD_nE',
+    appId: '1:744453858462:ios:0f21da7367655c9311078f',
+    messagingSenderId: '744453858462',
+    projectId: 'birthday-32b48',
+    storageBucket: 'birthday-32b48.firebasestorage.app',
+    iosBundleId: 'com.example.flutterApplication1',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAa_UAdFfsvZXiuVcjeg2FZqmWuhDlwXio',
+    appId: '1:744453858462:web:34084bde3eb23e8311078f',
+    messagingSenderId: '744453858462',
+    projectId: 'birthday-32b48',
+    authDomain: 'birthday-32b48.firebaseapp.com',
+    storageBucket: 'birthday-32b48.firebasestorage.app',
+    measurementId: 'G-L0SMVYMY6K',
   );
 }

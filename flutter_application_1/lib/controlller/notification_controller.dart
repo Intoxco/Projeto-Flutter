@@ -97,6 +97,8 @@
         importance: Importance.max,
         priority: Priority.max,
         enableVibration: true,
+        enableLights: true,
+   
       );
       localNotificationsPlugin.show(
         notification.id,

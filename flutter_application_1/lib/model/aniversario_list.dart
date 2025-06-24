@@ -105,6 +105,14 @@ class AniversarioList extends ChangeNotifier{
     );
     return lista;
   }
+  List<Aniversario> filtrarAniversariosPorData(DateTime data){
+List <Aniversario> lista = List.from(
+      _lista.where(
+      (a) => a.data.month.compareTo(data.month).isEven && a.data.day.compareTo(data.day).isEven
+      )
+    );
+    return lista;
+  }
   static bool mesmaData(DateTime data1, DateTime data2) {
   return data1.year == data2.year &&
          data1.month == data2.month &&

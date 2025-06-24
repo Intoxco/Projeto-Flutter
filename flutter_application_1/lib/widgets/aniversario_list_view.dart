@@ -21,6 +21,11 @@ class _AniversarioListView extends State<AniversarioListView> {
   void initState() {
     super.initState();
       controller = TextEditingController(text: "");
+       busca.addListener((){
+      setState((){
+        _atualizarLista;}
+        );
+    });
   }
   _atualizarLista(){
     lista= atualizarLista(widget.data,busca.value,widget.checkData,widget.aniversarioList);
@@ -36,11 +41,7 @@ class _AniversarioListView extends State<AniversarioListView> {
   @override
   Widget build(BuildContext context) {
     lista = atualizarLista(widget.data, busca.value, widget.checkData, widget.aniversarioList);
-    busca.addListener((){
-      setState((){
-        _atualizarLista;}
-        );
-    });
+   
         return Padding(
           padding: const EdgeInsets.all(10),
           child: ListView.separated(
