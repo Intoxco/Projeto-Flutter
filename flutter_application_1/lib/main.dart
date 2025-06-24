@@ -10,7 +10,7 @@ void main() async{
     options:DefaultFirebaseOptions.currentPlatform
   );
   //await NotificationController().setupNotifications(); // timezone + plugin
-  //await FeriadoList.buscarFeriados();
+  await FeriadoList.buscarFeriados();
 
   runApp(MeuAplicativo());
 }
