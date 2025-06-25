@@ -31,7 +31,11 @@ class AniversarioList extends ChangeNotifier{
         lista.add(aniversario);
       }
       int i =0;
-      for( Aniversario aniversario in lista){
+      List <Aniversario> listaLembrete = List.from(
+      lista.where(
+      (a) => a.data.month.compareTo(DateTime.now().month).isEven && a.data.day.compareTo(DateTime.now().day).isEven
+      ));
+      for( Aniversario aniversario in listaLembrete){
         i++;
         NotificationController().showNotification(
         CustomNotification(id: i, title: 'Aniversário!', body: 'O aniversário de ${aniversario.nomeAniversariante} é HOJE!', payload: '')
@@ -110,14 +114,6 @@ class AniversarioList extends ChangeNotifier{
     lista = List.from(
     lista.where(
     (a) =>a.nomeAniversariante.contains(nome))
-    );
-    return lista;
-  }
-  List<Aniversario> filtrarAniversariosPorData(DateTime data){
-List <Aniversario> lista = List.from(
-      _lista.where(
-      (a) => a.data.month.compareTo(data.month).isEven && a.data.day.compareTo(data.day).isEven
-      )
     );
     return lista;
   }
