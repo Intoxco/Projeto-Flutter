@@ -2,6 +2,7 @@ import "dart:collection";
 import "package:cloud_firestore/cloud_firestore.dart";
 
 import "package:flutter/material.dart";
+import "package:flutter_application_1/controlller/notification_controller.dart";
 import "package:flutter_application_1/model/db_firestore.dart";
 import "package:flutter_application_1/controlller/auth_check_controller.dart";
 
@@ -28,6 +29,13 @@ class AniversarioList extends ChangeNotifier{
       for (var doc in snapshot.docs) {
         Aniversario aniversario = Aniversario(doc.get("data").toDate(),doc.get("nomeAniversariante"),doc.get("descricao"),doc.id);
         lista.add(aniversario);
+      }
+      int i =0;
+      for( Aniversario aniversario in lista){
+        i++;
+        NotificationController().showNotification(
+        CustomNotification(id: i, title: 'Aniversário!', body: 'O aniversário de ${aniversario.nomeAniversariante} é HOJE!', payload: '')
+      );
       }
       _lista = lista;
       notifyListeners();

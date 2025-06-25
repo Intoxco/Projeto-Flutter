@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controlller/feriado_list.dart';
 import 'package:flutter_application_1/controlller/notification_controller.dart';
 import 'package:flutter_application_1/model/aniversario_list.dart';
 import 'package:flutter_application_1/widgets/auth_check.dart';

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controlller/notification_controller.dart';
-import 'package:flutter_application_1/model/aniversario.dart';
-import 'package:flutter_application_1/model/aniversario_list.dart';
 import 'package:flutter_application_1/view/login_view.dart';
 import 'package:flutter_application_1/view/tela_padrao_view.dart';
 import 'package:flutter_application_1/controlller/auth_check_controller.dart';
@@ -25,14 +22,6 @@ class _AuthCheckState extends State<AuthCheck>{
       return Login();
     }
     else{
-      List<Aniversario> lista = Provider.of<AniversarioList>(context).filtrarAniversariosPorData(DateTime.now());
-      int i =0;
-      for( Aniversario aniversario in lista){
-        i++;
-        NotificationController().showNotification(
-        CustomNotification(id: i, title: 'Aniversário!', body: 'O aniversário de ${aniversario.nomeAniversariante} é HOJE!', payload: '')
-      );
-      }
       return HomeScreen();
       }
   }
